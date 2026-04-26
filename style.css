@@ -1,0 +1,170 @@
+:root {
+    --primary: #ff4655;
+    --primary-glow: rgba(255, 70, 85, 0.5);
+    --bg: #0f1923;
+    --sidebar-bg: #101823;
+    --card-bg: rgba(23, 35, 45, 0.7);
+    --text: #ece8e1;
+    --text-dim: #7e7e7e;
+    --success: #00ff85;
+    --danger: #ff4655;
+    --glass: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    height: 100vh;
+    overflow: hidden;
+}
+
+.background-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, #1a2c3d 0%, #0f1923 100%);
+    z-index: -1;
+}
+
+.app-wrapper {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 260px;
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--glass-border);
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 50px;
+    padding: 0 10px;
+}
+
+.v-logo {
+    background: var(--primary);
+    color: var(--bg);
+    padding: 4px 10px;
+    font-weight: 800;
+    font-size: 20px;
+    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+}
+
+.logo-container h2 {
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+nav {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nav-item {
+    background: transparent;
+    border: none;
+    color: var(--text-dim);
+    padding: 14px 20px;
+    text-align: left;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-item .icon { font-size: 18px; }
+.nav-item:hover { background: var(--glass); color: var(--text); }
+.nav-item.active { background: rgba(255, 70, 85, 0.1); color: var(--primary); border-left: 3px solid var(--primary); }
+
+.sidebar-footer { padding-top: 20px; border-top: 1px solid var(--glass-border); }
+
+.btn-secondary {
+    width: 100%;
+    background: var(--glass);
+    color: var(--text);
+    border: 1px solid var(--glass-border);
+    padding: 12px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    transition: all 0.2s ease;
+}
+
+.btn-secondary:hover { background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.2); }
+
+/* Content Area */
+.content { flex: 1; padding: 40px 60px; overflow-y: auto; }
+.header-row { margin-bottom: 40px; }
+h1 { font-size: 32px; font-weight: 800; margin-bottom: 8px; }
+.subtitle { color: var(--text-dim); font-size: 14px; }
+
+.tab-content { display: none; }
+.tab-content.active { display: block; animation: fadeIn 0.3s ease; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Rank Grid */
+.rank-grid-container { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 15px; padding: 30px; margin-bottom: 30px; }
+.rank-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 15px; max-height: 400px; overflow-y: auto; padding: 10px; }
+.rank-card { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--glass-border); padding: 20px 10px; border-radius: 12px; display: flex; flex-direction: column; align-items: center; gap: 12px; cursor: pointer; transition: all 0.3s ease; }
+.rank-card img { width: 60px; height: 60px; object-fit: contain; }
+.rank-card span { font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--text-dim); }
+.rank-card:hover { background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.2); transform: translateY(-5px); }
+.rank-card.selected { background: rgba(255, 70, 85, 0.08); border-color: var(--primary); box-shadow: 0 0 20px rgba(255, 70, 85, 0.1); }
+.rank-card.selected span { color: var(--primary); }
+
+/* Editor Panel */
+.editor-panel { padding: 30px; border-radius: 15px; display: flex; justify-content: space-between; align-items: center; }
+.input-group { display: flex; flex-direction: column; gap: 8px; }
+.apply-group { display: flex; flex-direction: column; align-items: flex-end; gap: 15px; }
+.checkbox-group { display: flex; align-items: center; gap: 10px; color: var(--text-dim); font-size: 13px; font-weight: 600; }
+.checkbox-group input { width: 18px; height: 18px; cursor: pointer; accent-color: var(--primary); }
+.checkbox-group label { text-transform: none; letter-spacing: 0; cursor: pointer; }
+
+label { font-size: 12px; text-transform: uppercase; color: var(--text-dim); font-weight: 600; letter-spacing: 1px; }
+input, select { background: #1a2c3d; border: 1px solid var(--glass-border); color: var(--text); padding: 12px 15px; border-radius: 8px; font-size: 14px; width: 250px; }
+input:focus, select:focus { border-color: var(--primary); outline: none; }
+
+.btn-primary { background: var(--primary); color: white; border: none; padding: 14px 40px; font-size: 14px; font-weight: 800; letter-spacing: 1.5px; cursor: pointer; clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%); transition: all 0.3s ease; }
+.btn-primary:hover:not(:disabled) { transform: scale(1.05); box-shadow: 0 0 30px var(--primary-glow); }
+.btn-primary:disabled { opacity: 0.3; cursor: not-allowed; }
+
+.customize-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 30px; }
+.input-card { padding: 25px; border-radius: 15px; }
+.input-card select, .input-card input { width: 100%; margin-top: 10px; }
+
+.status-badge { padding: 12px; border-radius: 10px; font-size: 11px; font-weight: 800; text-align: center; background: rgba(0,0,0,0.2); }
+.status-badge.connected { color: var(--success); }
+.status-badge.disconnected { color: var(--danger); }
+.pulse { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: currentColor; margin-right: 8px; }
+
+.glass { background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); }
+.skins-placeholder { height: 300px; display: flex; justify-content: center; align-items: center; border-radius: 15px; color: var(--text-dim); }

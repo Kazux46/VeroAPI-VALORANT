@@ -1,0 +1,17 @@
+# Dependency folders (very large, never upload these)
+node_modules/
+
+# Local environment variables (if you ever use them)
+.env
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Build output (your .exe)
+*.exe

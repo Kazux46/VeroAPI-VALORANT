@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VeroAPI - Valorant Companion</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="background-glow"></div>
+
+    <div class="app-wrapper">
+        <aside class="sidebar">
+            <div class="logo-container">
+                <span class="v-logo">V</span>
+                <h2>VeroAPI</h2>
+            </div>
+            <nav>
+                <button class="nav-item active" data-tab="profile">
+                    <span class="icon">👤</span> Profile
+                </button>
+                <button class="nav-item" data-tab="customize">
+                    <span class="icon">🎨</span> Customize
+                </button>
+                <button class="nav-item" data-tab="skins">
+                    <span class="icon">🔫</span> Skins
+                </button>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="authorize-btn" class="btn-secondary">AUTHORIZE</button>
+                <div id="connection-status" class="status-badge disconnected">
+                    <span class="pulse"></span>
+                    UNAUTHORIZED
+                </div>
+            </div>
+        </aside>
+
+        <main class="content">
+            <!-- Profile Tab -->
+            <section id="tab-profile" class="tab-content active">
+                <div class="header-row">
+                    <h1>Rank Editor</h1>
+                    <p class="subtitle">Change your displayed rank and leaderboard position.</p>
+                </div>
+
+                <div class="rank-grid-container">
+                    <div id="rank-grid" class="rank-grid"></div>
+                </div>
+
+                <div class="editor-panel glass">
+                    <div class="input-group">
+                        <label>Leaderboard Position</label>
+                        <input type="number" id="leaderboard-pos" placeholder="1" value="1">
+                        <small>Only visible for Radiant rank</small>
+                    </div>
+                    <div class="apply-group">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="auto-reapply">
+                            <label for="auto-reapply">Auto-Reapply (20s)</label>
+                        </div>
+                        <button id="apply-rank-btn" class="btn-primary" disabled>APPLY RANK</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Customize Tab -->
+            <section id="tab-customize" class="tab-content">
+                <div class="header-row">
+                    <h1>Customize Profile</h1>
+                    <p class="subtitle">Edit level, title, card, and more. (Game restart may be required)</p>
+                </div>
+
+                <div class="customize-grid">
+                    <div class="input-card glass">
+                        <label>Player Title</label>
+                        <select id="player-title-select"></select>
+                    </div>
+                    <div class="input-card glass">
+                        <label>Player Card</label>
+                        <select id="player-card-select"></select>
+                    </div>
+                    <div class="input-card glass">
+                        <label>Level Border</label>
+                        <select id="level-border-select"></select>
+                    </div>
+                </div>
+
+                <div class="actions-row">
+                    <button id="apply-customize-btn" class="btn-primary">APPLY CHANGES</button>
+                </div>
+            </section>
+
+            <!-- Skins Tab -->
+            <section id="tab-skins" class="tab-content">
+                <div class="header-row">
+                    <h1>Skin Changer</h1>
+                    <p class="subtitle">Select a weapon and equip any skin. (Requires game restart)</p>
+                </div>
+
+                <div class="skins-container">
+                    <div class="weapon-selector glass">
+                        <label>Select Weapon</label>
+                        <select id="weapon-select">
+                            <option value="">Choose Weapon...</option>
+                        </select>
+                    </div>
+                    <div id="skins-grid" class="rank-grid"></div>
+                </div>
+
+                <div class="actions-row" style="margin-top: 20px;">
+                    <button id="equip-skin-btn" class="btn-primary" disabled>EQUIP SKIN</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
